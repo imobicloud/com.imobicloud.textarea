@@ -40,3 +40,6 @@ Controller
     	alert(e.height);
     }
 
+Changes log:
+
+- Rename classnames: ET-xx to imc-xx

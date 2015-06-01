@@ -1,5 +1,5 @@
 /*
-".ET-container": { height: Ti.UI.SIZE, left: 10, right: 10 }
-	".ET-hint": { top: 7, left: 5, font: { fontSize: 12 }, color: '#999', touchEnabled: false, visible: true }
-	".ET-textarea": { width: '100%', height: Ti.UI.SIZE, font: { fontSize: 12 }, color: '#000', backgroundColor: 'transparent', suppressReturn: false }
+".imc-textarea": { height: Ti.UI.SIZE, left: 10, right: 10 }
+	".imc-textarea-hint": { top: 7, left: 5, font: { fontSize: 12 }, color: '#999', touchEnabled: false, visible: true }
+	".imc-textarea-textarea": { width: '100%', height: Ti.UI.SIZE, font: { fontSize: 12 }, color: '#000', backgroundColor: 'transparent', suppressReturn: false }
 */

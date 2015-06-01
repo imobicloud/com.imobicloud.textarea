@@ -1,0 +1,18 @@
+<Alloy>
+	<Window class="container">
+		
+		<View id="messages" class="messages">
+			<Label bottom="0" color="#fff">bottom</Label>
+		</View>
+		
+		<View id="messageBox" class="wrapper">
+			<Widget id="txtMessage" src="com.imobicloud.textarea" 
+				class="txt-message" 
+				maxHeight="80" 
+				hintText="Type here..." 
+				onChange="messageBoxChange" 
+				onResize="messageBoxResize"/>
+		</View>
+		
+	</Window>
+</Alloy>

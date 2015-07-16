@@ -22,11 +22,7 @@ function init() {
 	}
 	
 	if (args.hintText) {
-		if (OS_IOS) {
-			$.hint.text = args.hintText;
-		} else {
-			$.textarea.hintText = args.hintText;
-		}
+		setHintText(args.hintText);
 	}
 };
 
@@ -72,6 +68,15 @@ exports.setValue = function(value) {
 	$.textarea.value = value;
 	return textareaChange.call( $.textarea );
 };
+
+function setHintText(hintText) {
+	if (OS_IOS) {
+		$.hint.text = hintText;
+	} else {
+		$.textarea.hintText = hintText;
+	}
+}
+exports.setHintText = setHintText;
 
 exports.updateUI = function(style) {
 	$.getView().applyProperties(style);

@@ -6,12 +6,10 @@
 		</View>
 		
 		<View id="messageBox" class="wrapper">
-			<Widget id="txtMessage" src="com.imobicloud.textarea" 
-				class="txt-message" 
-				maxHeight="80" 
-				hintText="Type here..." 
-				onChange="messageBoxChange" 
-				onResize="messageBoxResize"/>
+			<Widget id="txtMessageContainer” src="com.imobicloud.textarea" class="txt-message" maxHeight="100" onResize="messageBoxResize">
+    				<Label role="hint" class="imc-textarea-hint" platform="ios">Type here...</Label>
+				<TextArea role="textarea" class="imc-textarea-textarea" hintText="Type here..."/>
+    			</Widget>
 		</View>
 		
 	</Window>

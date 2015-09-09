@@ -1,28 +1,36 @@
 /*
  args = {
  	class: null, // or tss classname 
- 	maxHeight: 80,
- 	hintText: 'Enter message...'
+ 	maxHeight: 80
  }
  * */
 var args = arguments[0] || {};
-args.maxHeight = args.maxHeight || 80;
+args.maxHeight = args.maxHeight ? parseInt(args.maxHeight, 10) : 80;
 
 init();
 function init() {
-	var exclude = ['id', 'maxHeight', 'hintText'],
-		style = _.omit(args, exclude);
+	var exclude = ['id', 'maxHeight', 'children'];
+	$.container.applyProperties(_.omit(args, exclude));
 	
-	$.getView().applyProperties(style);
-	
-	if (style.height) {
-		$.textarea.height = parseInt(style.height, 10);
-	} else {
-		$.textarea.addEventListener('postlayout', textareaPostlayout);
-	}
-	
-	if (args.hintText) {
-		setHintText(args.hintText);
+	if (args.children) {
+		_.each(args.children, function(child) {
+			var role = child.role;
+			if (role) {
+				$[role] = child;
+				if (role == 'textarea') {
+					child.addEventListener('change', textareaChange);
+					if ($.container.height == Ti.UI.SIZE) {
+						child.height = Ti.UI.SIZE;
+						child.addEventListener('postlayout', textareaPostlayout);
+					} else {
+						child.height = '100%';
+					}
+				}
+			}
+			$.container.add(child);
+		});
+		args.id = null;
+		args.children = null;
 	}
 };
 
@@ -38,15 +46,13 @@ function textareaChange(e) {
 		}
   	}
   	
-  	// reset textarea height
+  	// reset text-area height
   	if (this._len && value.length < this._len) {
   		this.height = Ti.UI.SIZE;
   	}
-  	
-  	$.trigger('change', { value: value });
 }
 
-// limit textarea height, less than args.maxHeight
+// limit text-area height, less than args.maxHeight
 function textareaPostlayout(e) {
   	if (this.rect.height > args.maxHeight) {
   		this._len = this.value.length;
@@ -58,26 +64,4 @@ function textareaPostlayout(e) {
 
 exports.getHeight = function() {
 	return $.textarea.rect.height;
-};
-
-exports.getValue = function() {
-	return $.textarea.value.trim();
-};
-
-exports.setValue = function(value) {
-	$.textarea.value = value;
-	return textareaChange.call( $.textarea );
-};
-
-function setHintText(hintText) {
-	if (OS_IOS) {
-		$.hint.text = hintText;
-	} else {
-		$.textarea.hintText = hintText;
-	}
-}
-exports.setHintText = setHintText;
-
-exports.updateUI = function(style) {
-	$.getView().applyProperties(style);
 };

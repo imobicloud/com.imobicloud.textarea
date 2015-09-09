@@ -1,6 +1,3 @@
 <Alloy>
-	<View class="imc-textarea">
-		<Label id="hint" class="imc-textarea-hint" platform="ios">Enter message...</Label>
-		<TextArea id="textarea" class="imc-textarea-textarea" hintText="Enter message..." onChange="textareaChange"></TextArea>
-	</View>
+	<View id="container" class="imc-textarea"/>
 </Alloy>

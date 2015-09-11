@@ -25,6 +25,10 @@ Controller
     	alert(e.height);
     }
 
+Issues
+
+- use [setValue] to update new value for TextArea, do not use [TextArea.value = new value;]
+
 Changes log:
 
 - Remove change event

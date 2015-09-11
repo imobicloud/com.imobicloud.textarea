@@ -18,6 +18,11 @@ function init() {
 			if (role) {
 				$[role] = child;
 				if (role == 'textarea') {
+					// fix change event is not fired
+					child.setValue = function(value) {
+						this.value = value;
+  						textareaChange.call(this);
+					};
 					child.addEventListener('change', textareaChange);
 					if ($.container.height == Ti.UI.SIZE) {
 						child.height = Ti.UI.SIZE;

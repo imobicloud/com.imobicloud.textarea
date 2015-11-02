@@ -31,9 +31,14 @@ Issues
 
 Changes log:
 
+November 2, 2015
+- Add back change event
+
+2015
 - Remove change event
 - Remove updateUI function
 - Remove blur function
 - Remove getValue + setValue function
 - Remove hintText property + setHintText function
+
 - Rename classnames: ET-xx to imc-xx

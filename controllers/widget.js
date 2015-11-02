@@ -1,6 +1,5 @@
 /*
  args = {
- 	class: null, // or tss classname 
  	maxHeight: 80
  }
  * */
@@ -43,18 +42,14 @@ function textareaChange(e) {
 	var value = this.value;
 	
 	// toggle hint text
-  	if (OS_IOS) {
-  		if (value.length > 0) {
-			$.hint.hide();
-		} else {
-			$.hint.show();
-		}
-  	}
+  	OS_IOS && $.hint[ value.length > 0 ? 'hide' : 'show' ]();
   	
   	// reset text-area height
   	if (this._len && value.length < this._len) {
   		this.height = Ti.UI.SIZE;
   	}
+  	
+  	$.trigger('change', { value: value });
 }
 
 // limit text-area height, less than args.maxHeight

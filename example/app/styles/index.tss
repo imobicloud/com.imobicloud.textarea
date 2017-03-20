@@ -1,7 +1,0 @@
-".container": { backgroundColor: '#fff', orientationModes: [ Ti.UI.PORTRAIT ] }
-".container[platform=ios]": { statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT, navBarHidden: true }
-".container[platform=android]": { exitOnClose: false, windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_PAN | Ti.UI.Android.SOFT_INPUT_STATE_ALWAYS_HIDDEN } /* location_calendar chat box */
-
-	".messages": { backgroundColor: '#000' }
-	".wrapper": { height: Titanium.UI.SIZE, bottom: 0, backgroundColor: '#ededed' }
-		".txt-message": {  }
